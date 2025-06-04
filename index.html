@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribun Digital - Berita Terkini dan Terpercaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS untuk elemen tertentu */
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+        }
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .breaking-news-ticker {
+            animation: scroll 15s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="bg-red-600 text-white px-3 py-1 rounded mr-2 text-xl font-bold">TD</div>
+                    <div class="text-xl font-bold text-gray-800">TRIBUN DIGITAL</div>
+                </div>
+                
+                <!-- Search and Login -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="Cari berita..." class="border border-gray-300 rounded-full py-1 px-4 pl-10 w-64 focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <i class="fas fa-search absolute left-3 top-2 text-gray-400"></i>
+                    </div>
+                    <button class="bg-red-600 text-white px-4 py-1 rounded-md hover:bg-red-700 transition">Login</button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-600" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:block mt-4">
+                <ul class="flex space-x-6 text-sm font-medium">
+                    <li><a href="#" class="text-red-600 border-b-2 border-red-600 pb-3">Home</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Nasional</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Internasional</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Bisnis</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Olahraga</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Teknologi</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Hiburan</a></li>
+                    <li><a href="#" class="hover:text-red-600 pb-3 transition">Kesehatan</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden hidden bg-white shadow-md py-4 px-4" id="mobile-menu">
+        <div class="flex mb-4">
+            <input type="text" placeholder="Cari berita..." class="border border-gray-300 rounded-full py-1 px-4 pl-10 w-full focus:outline-none focus:ring-2 focus:ring-red-500">
+        </div>
+        <ul class="space-y-3">
+            <li><a href="#" class="block text-red-600">Home</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Nasional</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Internasional</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Bisnis</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Olahraga</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Teknologi</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Hiburan</a></li>
+            <li><a href="#" class="block text-gray-700 hover:text-red-600">Kesehatan</a></li>
+        </ul>
+        <button class="mt-4 w-full bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition">Login</button>
+    </div>
+
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 text-white py-2 px-4 overflow-hidden">
+        <div class="container mx-auto flex">
+            <div class="font-bold mr-4 whitespace-nowrap">BREAKING NEWS:</div>
+            <div class="whitespace-nowrap breaking-news-ticker">
+                <span class="mx-4">Gempa 5,2 SR mengguncang Jawa Barat, belum ada laporan korban</span>
+                <span class="mx-4">Harga BBM naik mulai besok, Pertamina umumkan perubahan harga</span>
+                <span class="mx-4">Timnas Indonesia lolos ke Piala Dunia 2026 setelah kalahkan Vietnam</span>
+                <span class="mx-4">CEO Twitter Elon Musk kunjungi Indonesia pekan depan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="relative h-96 bg-gray-800 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c7e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Hero Image" class="w-full h-full object-cover">
+        <div class="absolute inset-0 hero-gradient"></div>
+        <div class="absolute bottom-0 left-0 p-8 text-white w-full md:w-2/3">
+            <span class="bg-red-600 text-xs px-2 py-1 rounded mb-2 inline-block">TERKINI</span>
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">Presiden Jokowi Resmikan Pembangunan Jalan Tol Trans Jawa Tahap Akhir</h1>
+            <p class="text-gray-300 mb-4">Proyek senilai Rp 45 triliun ini akan menghubungkan seluruh kota besar di Pulau Jawa dan diperkirakan selesai dalam 2 tahun.</p>
+            <div class="flex items-center text-sm">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Reporter" class="w-8 h-8 rounded-full mr-2">
+                <span>Rahmat Santoso</span>
+                <span class="mx-2">•</span>
+                <span>2 jam yang lalu</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Main Articles -->
+            <div class="lg:w-2/3">
+                <!-- Featured Section -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold border-l-4 border-red-600 pl-3 mb-6">FEATURED STORIES</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Featured Article 1 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Featured 1" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-red-600">EKONOMI</span>
+                                <h3 class="text-xl font-bold mt-1 mb-2">Inflasi Indonesia Turun ke 3,5%, Terendah dalam 3 Tahun</h3>
+                                <p class="text-gray-600 text-sm mb-3">Bank Indonesia menyatakan inflasi terkendali berkat kebijakan moneter yang ketat dan stabilisasi harga pangan.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>4 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Featured Article 2 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Featured 2" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-blue-600">LINGKUNGAN</span>
+                                <h3 class="text-xl font-bold mt-1 mb-2">Studi Baru: Deforestasi di Indonesia Turun 75% pada 2023</h3>
+                                <p class="text-gray-600 text-sm mb-3">Upaya pemerintah dan masyarakat mulai membuahkan hasil dengan penurunan signifikan laju deforestasi tahun ini.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>6 jam yang lalu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Latest News Section -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold border-l-4 border-red-600 pl-3 mb-6">BERITA TERKINI</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- News Article 1 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1546410531-bb4eea3055e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 1" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-green-600">PENDIDIKAN</span>
+                                <h3 class="text-lg font-bold mt-1 mb-2">Mendikbud Umumkan Beasiswa Baru untuk Mahasiswa Berprestasi</h3>
+                                <p class="text-gray-600 text-sm mb-3">Program beasiswa ini akan menyasar 10.000 mahasiswa dari keluarga kurang mampu di seluruh Indonesia.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>8 jam yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 2.4K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- News Article 2 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1075&q=80" alt="News 2" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-purple-600">OLAHRAGA</span>
+                                <h3 class="text-lg font-bold mt-1 mb-2">Timnas U-23 Juara Turnamen Internasional di Spanyol</h3>
+                                <p class="text-gray-600 text-sm mb-3">Kemenangan dramis 3-2 atas tuan rumah Spanyol membawa tim garuda muda meraih trophy pertama tahun ini.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>10 jam yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 5.1K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- News Article 3 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 3" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-yellow-600">BISNIS</span>
+                                <h3 class="text-lg font-bold mt-1 mb-2">GoTo Catat Laba Bersih Pertama Sejak Merger</h3>
+                                <p class="text-gray-600 text-sm mb-3">Perusahaan teknologi raksasa ini mencatat keuntungan Rp 1,2 triliun pada kuartal II 2023.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>12 jam yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 3.7K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- News Article 4 -->
+                        <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="News 4" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <span class="text-xs font-semibold text-red-600">HUKUM</span>
+                                <h3 class="text-lg font-bold mt-1 mb-2">KPK Tangkap Bupati Terkait Kasus Suap Proyek Infrastruktur</h3>
+                                <p class="text-gray-600 text-sm mb-3">Operasi tangkap tangan dilakukan dini hari di sebuah hotel berbintang di Jakarta.</p>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>14 jam yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 8.2K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 text-center">
+                        <button class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition">Lihat Semua Berita</button>
+                    </div>
+                </section>
+                
+                <!-- Popular News Section -->
+                <section>
+                    <h2 class="text-2xl font-bold border-l-4 border-red-600 pl-3 mb-6">POPULER</h2>
+                    <div class="space-y-4">
+                        <!-- Popular News 1 -->
+                        <div class="flex items-start gap-4 border-b pb-4">
+                            <div class="flex-shrink-0 w-20 h-20">
+                                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Popular 1" class="w-full h-full object-cover rounded">
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-red-600">KESEHATAN</span>
+                                <h3 class="text-lg font-bold mt-1 mb-1">Peneliti Temukan Vaksin Potensial untuk Kanker Payudara Stadium Lanjut</h3>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>1 hari yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 12.5K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Popular News 2 -->
+                        <div class="flex items-start gap-4 border-b pb-4">
+                            <div class="flex-shrink-0 w-20 h-20">
+                                <img src="https://images.unsplash.com/photo-1507679788360-6169f8fa7dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Popular 2" class="w-full h-full object-cover rounded">
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-blue-600">TEKNOLOGI</span>
+                                <h3 class="text-lg font-bold mt-1 mb-1">Startup Lokal Rilis AI Chatbot Bahasa Indonesia dengan Fitur Unik</h3>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>1 hari yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 9.8K</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Popular News 3 -->
+                        <div class="flex items-start gap-4 border-b pb-4">
+                            <div class="flex-shrink-0 w-20 h-20">
+                                <img src="https://images.unsplash.com/photo-1581093450020-d6a3c6de1ee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Popular 3" class="w-full h-full object-cover rounded">
+                            </div>
+                            <div>
+                                <span class="text-xs font-semibold text-green-600">INOVASI</span>
+                                <h3 class="text-lg font-bold mt-1 mb-1">Mahasiswa UI Ciptakan Alat Pengubah Sampah Plastik Jadi Bahan Bakar</h3>
+                                <div class="flex items-center text-xs text-gray-500">
+                                    <i class="far fa-clock mr-1"></i>
+                                    <span>2 hari yang lalu</span>
+                                    <span class="ml-2"><i class="far fa-eye mr-1"></i> 15.3K</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="lg:w-1/3">
+                <!-- Weather Widget -->
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold">Cuaca Hari Ini</h3>
+                        <span class="text-gray-500 text-sm">Jakarta, Indonesia</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-sun text-yellow-500 text-4xl mr-4"></i>
+                            <div>
+                                <div class="text-3xl font-bold">32°C</div>
+                                <div class="text-sm text-gray-600">Cerah berawan</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm">Max: 34°C</div>
+                            <div class="text-sm">Min: 27°C</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2 mt-4 text-xs">
+                        <div class="text-center">
+                            <div>12:00</div>
+                            <i class="fas fa-sun text-yellow-400 my-1"></i>
+                            <div>31°C</div>
+                        </div>
+                        <div class="text-center">
+                            <div>15:00</div>
+                            <i class="fas fa-cloud-sun text-gray-400 my-1"></i>
+                            <div>33°C</div>
+                        </div>
+                        <div class="text-center">
+                            <div>18:00</div>
+                            <i class="fas fa-cloud-rain text-blue-400 my-1"></i>
+                            <div>29°C</div>
+                        </div>
+                        <div class="text-center">
+                            <div>21:00</div>
+                            <i class="fas fa-moon text-gray-400 my-1"></i>
+                            <div>28°C</div>
+                        </div>
+                        <div class="text-center">
+                            <div>00:00</div>
+                            <i class="fas fa-moon text-gray-400 my-1"></i>
+                            <div>27°C</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subscribe Widget -->
+                <div class="bg-red-50 rounded-lg shadow-md p-4 mb-6 border border-red-100">
+                    <h3 class="font-bold mb-3">Berlangganan Newsletter</h3>
+                    <p class="text-sm text-gray-600 mb-3">Dapatkan berita terkini langsung ke email Anda setiap hari.</p>
+                    <input type="email" placeholder="Alamat email Anda" class="w-full px-3 py-2 border rounded mb-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <button class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700 transition">Berlangganan</button>
+                </div>
+                
+                <!-- Trending Tags -->
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                    <h3 class="font-bold mb-3">TRENDING TAGS</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#Pemilu2024</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#Inflasi</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#IHSG</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#TimnasIndonesia</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#GempaJabar</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#KotaJakarta</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#KPU</a>
+                        <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm px-3 py-1 rounded-full transition">#ElonMusk</a>
+                    </div>
+                </div>
+                
+                <!-- Video Section -->
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold mb-3">VIDEO POPULER</h3>
+                    <div class="space-y-4">
+                        <!-- Video 1 -->
+                        <div>
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Video 1" class="w-full h-40 object-cover rounded">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="font-bold mt-2">Detik-detik Gempa 5,2 SR Guncang Jawa Barat Pagi Ini</h4>
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
+                                <span>1 jam yang lalu</span>
+                                <span class="ml-2"><i class="far fa-eye mr-1"></i> 45K</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Video 2 -->
+                        <div>
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Video 2" class="w-full h-40 object-cover rounded">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 class="font-bold mt-2">Wow! Ini Penampakan Terbaru Proyek Ibu Kota Negara</h4>
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
+                                <span>3 jam yang lalu</span>
+                                <span class="ml-2"><i class="far fa-eye mr-1"></i> 32K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <div class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Dapatkan Update Berita Terbaru</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-6">Berlangganan newsletter kami untuk mendapatkan berita terbaru dan terpercaya langsung ke inbox email Anda setiap hari.</p>
+            <div class="flex flex-col sm:flex-row justify-center max-w-lg mx-auto gap-3">
+                <input type="email" placeholder="Alamat email Anda" class="flex-grow px-4 py-2 rounded border focus:outline-none focus:ring-2 focus:ring-red-500">
+                <button class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Berlangganan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Tentang Kami</h3>
+                    <p class="text-gray-400 text-sm mb-4">Tribun Digital adalah portal berita terpercaya yang menyajikan informasi aktual, akurat, dan berimbang.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kategori</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">Nasional</a></li>
+                        <li><a href="#" class="hover:text-white transition">Internasional</a></li>
+                        <li><a href="#" class="hover:text-white transition">Bisnis & Ekonomi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Politik</a></li>
+                        <li><a href="#" class="hover:text-white transition">Olahraga</a></li>
+                        <li><a href="#" class="hover:text-white transition">Teknologi</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak Kami</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2"></i>
+                            <span>Jl. Medan Merdeka Selatan No.21, Jakarta Pusat 10110</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2"></i>
+                            <span>(021) 3456789</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>redaksi@tribundigital.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-fax mr-2"></i>
+                            <span>(021) 3456790</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Apps -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Download Aplikasi</h3>
+                    <div class="space-y-3 mb-4">
+                        <a href="#" class="flex items-center bg-black text-white rounded px-3 py-2">
+                            <i class="fab fa-apple text-xl mr-2"></i>
+                            <div class="text-left">
+                                <div class="text-xs">Download on the</div>
+                                <div class="text-sm font-semibold">App Store</div>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center bg-black text-white rounded px-3 py-2">
+                            <i class="fab fa-google-play text-xl mr-2"></i>
+                            <div class="text-left">
+                                <div class="text-xs">GET IT ON</div>
+                                <div class="text-sm font-semibold">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-6 text-sm text-gray-400">
+                <div class="flex flex-col md:flex-row justify-between">
+                    <div class="mb-4 md:mb-0">
+                        &copy; 2023 Tribun Digital. All Rights Reserved.
+                    </div>
+                    <div class="flex flex-col md:flex-row md:space-x-6">
+                        <a href="#" class="hover:text-white transition mb-2 md:mb-0">Kebijakan Privasi</a>
+                        <a href="#" class="hover:text-white transition mb-2 md:mb-0">Syarat & Ketentuan</a>
+                        <a href="#" class="hover:text-white transition">Redaksi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-red-600 text-white w-12 h-12 rounded-full shadow-lg hidden hover:bg-red-700 transition">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
